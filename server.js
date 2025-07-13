@@ -13,7 +13,21 @@ const app = express()
 await connectDB()
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  'https://carrentel-7fto.onrender.com'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res)=> res.send("Server is running"))
