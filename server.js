@@ -15,7 +15,7 @@ await connectDB()
 // Middleware
 const allowedOrigins = [
   'https://carrentel-7fto.onrender.com',
-  'https://car-rentel-7fto.onrender.com'
+  'https://car-rentel.onrender.com'
 ];
 
 app.use(cors({
