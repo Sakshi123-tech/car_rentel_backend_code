@@ -27,7 +27,7 @@ app.use(cors({
     }
   },
   credentials: true
-  optionsSuccessStatus: 200 // 🔧 Chrome needs a successful OPTIONS response
+  
 }));
 
 app.use(express.json());
