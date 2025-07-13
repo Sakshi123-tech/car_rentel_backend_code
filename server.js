@@ -8,28 +8,24 @@ import bookingRouter from "./routes/bookingRoutes.js";
 
 // Define allowed origins for CORS
 const allowedOrigins = [
-  'https://carrentel-7fto.onrender.com',
+  'https://car-rentel-user.vercel.app', // ✅ your frontend domain
+  'https://car-rentel-7fto.onrender.com',
   'https://car-rentel.onrender.com',
   'https://car-rentel-backend-code.vercel.app',
-  'http://localhost:3000', // React local dev
-  'http://localhost:8000'  // If calling server from itself
+  'http://localhost:3000',
+  'http://localhost:8000'
 ];
 
-// Start server inside an async function
-const startServer = async () => {
-  const app = express();
-
-  // CORS Middleware
-  app.use(cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true
-  }));
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 
   // Body Parser
   app.use(express.json());
